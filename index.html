@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iDesign</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Your provided CSS, plus some minor additions for clarity and functionality */
+       
+        body {
+            margin: 0;
+            background-color: #1a1a1a;
+            color: #f5f5dc;
+            overflow-x: hidden;
+        }
+.overlay {
+            display: none;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background-color: #111;
+            color: white;
+            position: fixed; /* Make the navbar fixed */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Ensure it's above other elements */
+        }
+
+        .nav-logo {
+            width: 80px; /* Increased size for better visibility */
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #bce8b5;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ccc;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            nav {
+                justify-content: flex-end;
+                padding: 1rem;
+            }
+
+            .nav-logo {
+                position: absolute;
+                top: 1rem;
+                left: 1rem;
+                opacity: 1;
+                transform: translateY(0);
+                animation: none;
+                width: 60px;
+            }
+
+            .menu-toggle {
+                display: block;
+                font-size: 2rem;
+                color: white;
+                cursor: pointer;
+                z-index: 1001;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                margin-right: 1rem;
+            }
+
+            .nav-links {
+                display: none !important;
+            }
+
+            .nav-links.active {
+                position: fixed; /* Changed to fixed */
+                top: 0;      /* Position at the top */
+                left: 0;
+                width: 100%;
+                height: 100vh; /* Full viewport height */
+                background-color: #111;
+                flex-direction: column;
+                align-items: center;
+                display: flex !important;
+                animation: slideDownMenu 0.5s ease forwards;
+                padding-top: 4rem; /* Add padding to avoid overlap with fixed navbar */
+            }
+
+            nav a {
+                padding: 1rem;
+                width: 100%;
+                text-align: center;
+                font-size: 1.2rem;
+            }
+            .nav-links a:hover{
+               background-color: #333;
+            }
+        }
+
+        @keyframes slideDownMenu {
+            from {
+                transform: translateY(-100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+
+        section {
+            padding: 140px 20px 20px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        #home {
+            background-image: url('websitebackground.webp');
+            background-size: cover;
+            background-position: center;
+        }
+
+        #home h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 3rem;
+            color: #ffffff;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+        }
+
+        #home h1:hover { transform: scale(1.05); }
+        #home h1 .highlight-green { color: #A3D39C; }
+
+        #home p {
+            font-family: 'Inter', sans-serif;
+            max-width: 600px;
+            font-weight: 400;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        /* OUR WORKS SECTION */
+       
+    .container {
+      max-width: 800px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .title {
+      font-size: 3rem;
+      color: #a3d29c;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    .description-box {
+      background-color: #1c1e1b;
+      color:white;
+      padding: 25px 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 10px rgba(163, 210, 156, 0.1);
+      font-size: 1.1rem;
+      line-height: 2;
+      margin-bottom: 30px;
+      
+    }
+
+    .image-container img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      margin-bottom: 30px;
+    }
+
+    .cta-button {
+      background: linear-gradient(to right, #06574a, #5e7d59);
+      color: #ffffff;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(6, 87, 74, 0.3);
+    }
+
+    .cta-button:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+    }
+
+   @media (max-width: 600px) {
+  .cta-button {
+    width: 90%;
+    padding: 12px 18px;
+    font-size: 0.95rem;
+    white-space: normal;
+    word-break: break-word;
+    line-height: 1.5;
+    margin: 12px auto;
+    display: block;
+    text-align: center;
+  }
+}
+
+
+        /* SERVICES SECTION */
+     
+ /* ===== Desktop View ===== */
+
+ body {
+  margin: 0;
+  font-family: 'Cairo', sans-serif;
+  background-color: #101010;
+}
+
+#services {
+  background-color: #181818;
+  padding: 100px 20px 60px;
+}
+
+.services-container {
+  max-width: 1200px;
+  margin: auto;
+  text-align: center;
+}
+
+.services-header {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #A2FF9E;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.service-card {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: #222;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
+}
+
+.service-card:hover {
+  transform: translateY(-6px);
+}
+
+.service-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.service-overlay {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  padding: 15px 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.service-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+  line-height: 1.6;
+}
+
+
+
+/* بەشی نرخەکان */
+#prices {
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  color: #e8fce8;
+  text-align: center;
+  font-family: 'Cairo', sans-serif;
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.5);
+}
+
+#prices h1 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  background: linear-gradient(90deg, #9be15d, #00e3ae);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 2px 8px rgba(0, 255, 200, 0.3);
+  font-weight: 800;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+#prices h1::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #00ffae, #6fffaf);
+  border-radius: 2px;
+  opacity: 0.8;
+}
+
+#prices p {
+  margin-bottom: 40px;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 1.2s ease-in-out;
+}
+
+/* fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+.form-group {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.form-group:hover {
+  transform: scale(1.02);
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #aaffaa;
+}
+
+.form-group select {
+  padding: 10px 18px;
+  font-size: 1rem;
+  width: 240px;
+  border-radius: 8px;
+  border: 1px solid #3a3a3a;
+  background-color: #121212;
+  color: #ffffff;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group select:focus {
+  border-color: #00ffae;
+  box-shadow: 0 0 10px rgba(0, 255, 180, 0.4);
+}
+
+#prices button {
+  margin-top: 20px;
+  background: linear-gradient(to right, #06574a, #5e7d59);
+  color: white;
+  padding: 12px 26px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+#prices button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+}
+
+#result {
+  margin-top: 30px;
+  padding: 12px;
+  background-color: #1c1c1c;
+  border-radius: 10px;
+  border: 1px solid #00ffae;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00ffae;
+  text-shadow: 0 0 6px rgba(0, 255, 160, 0.4);
+  box-shadow: 0 0 12px rgba(0, 255, 160, 0.1);
+}
+
+#whatsapp-btn {
+  display: none;
+  margin-top: 30px;
+  padding: 14px 28px;
+  font-size: 1.1rem;
+  background: linear-gradient(90deg, #25D366 0%, #128C7E 100%);
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#whatsapp-btn:hover {
+  transform: scale(1.07);
+  filter: brightness(1.1);
+}
+
+.quality-description {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.quality-box {
+  background: #181818;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  text-align: left;
+  box-shadow: 0 0 16px rgba(0, 255, 128, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.quality-box:hover {
+  transform: scale(1.01);
+  box-shadow: 0 0 24px rgba(0, 255, 160, 0.3);
+}
+
+.quality-box h3 {
+  color: #a3d29c;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.quality-box p {
+  color: #f2f2f2;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  #prices {
+    padding: 40px 15px;
+  }
+
+  .form-group select {
+    width: 100%;
+  }
+
+  .quality-description {
+    gap: 15px;
+  }
+
+  .quality-box {
+    padding: 16px;
+  }
+}
+
+
+/* بەشی نرخەکان kotayy */
+
+
+
+
+
+
+/* بەشی نرخی نەخشە */
+#about .container {
+  background: linear-gradient(145deg, rgba(28, 28, 28, 0.9), rgba(37, 37, 37, 0.95));
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 255, 153, 0.3);
+  border-radius: 20px;
+  padding: 50px 30px;
+  max-width: 520px;
+  width: 100%;
+  margin: 3.5rem auto;
+  box-shadow: 0 0 40px rgba(0, 255, 128, 0.12), inset 0 0 10px rgba(0, 255, 153, 0.05);
+  transition: all 0.35s ease;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+#about .container:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 50px rgba(0, 255, 128, 0.35);
+}
+
+#about h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #b4ffd4;
+  text-shadow: 0 0 12px rgba(0, 255, 170, 0.6);
+  letter-spacing: 1px;
+}
+
+#about label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #c8ffe0;
+  font-size: 1.05rem;
+}
+
+#about select,
+#about input {
+  width: 92%;
+  padding: 14px;
+  margin: 0 auto 22px;
+  display: block;
+  background: rgba(18, 18, 18, 0.95);
+  border: 1px solid #00ff99;
+  border-radius: 12px;
+  color: #f2fff6;
+  font-size: 1rem;
+  box-shadow: inset 0 0 6px rgba(0, 255, 128, 0.2);
+  transition: all 0.25s ease;
+}
+
+#about select:focus,
+#about input:focus {
+  outline: none;
+  border-color: #00ffbb;
+  box-shadow: 0 0 14px rgba(0, 255, 160, 0.4);
+}
+
+#about button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(to right, #00ff99, #00c97d);
+  color: #111;
+  font-size: 1.15rem;
+  font-weight: 800;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 0 14px rgba(0, 255, 153, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#about button:hover {
+  background: linear-gradient(to right, #00e676, #00b86d);
+  transform: translateY(-3px);
+  box-shadow: 0 0 24px rgba(0, 255, 128, 0.6);
+}
+
+#about #error-message-quick {
+  color: #ff5555;
+  text-align: center;
+  margin-top: 12px;
+  font-weight: bold;
+  display: none;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 600px) {
+  #about select,
+  #about input {
+    width: 90%;
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  #about .container {
+    padding: 30px 18px;
+    width: 100%;
+  }
+
+  #about h1 {
+    font-size: 1.6rem;
+  }
+}
+
+
+/* بەشی نرخی نەخشە */
+
+
+
+
+
+
+/* بەشی conatct us  */
+
+/* Default styles for larger screens (as before) */
+.contact-info {
+  background: linear-gradient(145deg, #181818, #0a0a0a);
+  padding: 55px;
+  border-radius: 24px;
+  margin-bottom: 60px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(100, 227, 159, 0.15);
+  opacity: 0;
+  animation: fadeIn 0.7s ease-out forwards 0.4s;
+  backdrop-filter: blur(8px);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-info h3 {
+  color: #8affc1;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2em;
+  margin-bottom: 30px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(138, 255, 193, 0.25);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.contact-info p {
+  color: #d4d4d4;
+  font-family: 'Merriweather', serif;
+  font-size: 1.15em;
+  line-height: 1.9;
+  margin-bottom: 25px;
+}
+
+.contact-info strong {
+  font-weight: 700;
+  color: #8affc1;
+}
+
+.contact-info a {
+  color: #bbf5c7;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  font-weight: 600;
+}
+
+.contact-info a:hover {
+  color: #8affc1;
+  text-shadow: 0 0 8px rgba(138, 255, 193, 0.6);
+}
+
+.social-links {
+  margin-top: 40px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border-radius: 36px;
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #c7c7c7;
+  font-size: 1em;
+  font-weight: 600;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.social-links a:hover {
+  color: #8affc1;
+  background-color: rgba(138, 255, 193, 0.1);
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(138, 255, 193, 0.4);
+  border-color: rgba(138, 255, 193, 0.3);
+}
+
+/* Media query for mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .contact-info {
+    padding: 30px;
+    margin-bottom: 30px;
+    border-radius: 16px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  .contact-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+  }
+
+  .contact-info p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  .social-links {
+    margin-top: 25px;
+    gap: 10px; /* Slightly reduced gap to accommodate wider buttons */
+    justify-content: center;
+  }
+
+  .social-links a {
+    padding: 12px 20px; /* Increased horizontal padding */
+    min-width: 120px; /* Ensure a minimum width for easier tapping */
+    border-radius: 24px;
+    font-size: 0.9em;
+  }
+}
+
+/* بەشی conatct us  */
+
+
+    </style>
+
+
+</head>
+
+    <div class="overlay" id="overlay"></div>
+    <nav>
+        <img src="idesign (2).webp" alt="iDesign Logo" class="nav-logo">
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#home" class="active-link">پەڕەی سەرەکی</a>
+            <a href="#our-jobs">خۆت دیزاینی واجیهەکەت بکە</a>
+            <a href="#services">خزمەتگوزاریەکانمان</a>
+            <a href="#prices">نرخی خەمڵێنراو</a>
+            <a href="#about">نرخی نەخشە</a>
+            <a href="#contact">پەیوەندیکردن</a>
+        </div>
+    </nav>
+
+    <section id="home">
+        <h1>لەگەڵ داهێنانەکانی <span class="highlight-green">ئای دیزاین </span>مەحاڵ پێناسەیەکی تری هەیە</h1>
+        <p>بەخێربێن بۆ داهێنانەکانی ئای دیزاین، کە تێیدا بۆشاییەکان پێناسە دەکەینەوە و خەونەکانتان دەکەینە واقیع</p>
+        <p>ئێمە پسپۆڕین لە دروستکردنی دیزاین کە لە ڕووی جوانکارییەوە دڵخۆشکەر و کارایی و بەپێی تۆ بێت</p>
+    </section>
+
+
+    <section id="our-jobs" class="animate-on-scroll">
+        
+       <div class="container">
+    <div class="title">دیزاینی واجیهەکەت لەگەڵ ئای دیزاین بکە</div>
+
+    <div class="description-box">
+      لەرێگای ئەم لینکە دەتوانیت وێنەی واجیهەی خانووەکەت داخڵبکەیت و بەهۆی<br>
+      سیستەمەکەی ستافی ئای دیزاین دیزاینی واجیهەکەت بکەیت، سیستەمەکە ڕاهێنراوە بەپێی جۆری<br>
+      واجیەهەکەت دیزاین بۆ خانووەکەت دەکات. بەردەوام لە نوێکردنەوە و باشترکردنی<br>
+      سیستەمەکەین، هەنگاوەکانی خوارەوە بۆ بەکارهێنانی سیستەمەکە لەبەرچاوبگرە
+    </div>
+
+    <div class="image-container">
+      <img src="je.webp" alt="iDesign Brochure">
+    </div>
+
+    <a class="cta-button" href="https://chatgpt.com/g/g-681e5b802ccc8191971a49ebeff8c051-idesign-ai-exterior-designer" target="_blank">
+      ئێرە دابگرە و بڕۆ ناو سیستەمەکە
+    </a>
+  </div>
+
+    </section>
+
+
+
+    
+    <section id="services">
+     
+        <section id="services">
+          <div class="services-container">
+            <h2 class="services-header">خزمەتگوزاریەکانمان</h2>
+            <div class="services-grid">
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img src=" سێتی خەریتە.webp" alt="Interior Design" class="service-image">
+                  <div class="service-overlay">
+                    <h3 class="service-title">دروستکردنی سێتی خەریتە</h3>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img src="سێ دووری ناوەوە و دەرەوە.webp" alt="Exterior Design" class="service-image">
+                  <div class="service-overlay">
+                    <h3 class="service-title">دیزاینی ناوەوە دەرەوە بەشێوەی سێ دووری</h3>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img src="ستراکچەر.webp" alt="Landscape Design" class="service-image">
+                  <div class="service-overlay">
+                    <h3 class="service-title">دیزاینی ستراکتەر (انشائئ)</h3>
+                  </div>
+                </div>
+              </div>
+        
+
+
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img src="میکانیک.webp" alt="Landscape Design" class="service-image">
+                  <div class="service-overlay">
+                    <h3 class="service-title">جێ بە جێ کردنی هە موو کارێکی میکانیک</h3>
+                  </div>
+                </div>
+              </div>
+        
+
+
+
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img src=" دیکۆراتی ناوەوە.webp" alt="Landscape Design" class="service-image">
+                  <div class="service-overlay">
+                    <h3 class="service-title">جێ بە جێ کردنی دیکۆراتی ناوەوە</h3>
+                  </div>
+                </div>
+              </div>
+        
+
+
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img src="تەعمیرکردنەوەی.webp" alt="Landscape Design" class="service-image">
+                  <div class="service-overlay">
+                    <h3 class="service-title">تەعمیرکردنەوەی هەموو جۆرە پڕۆژەیەک</h3>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img src="دیزاینی دەرەوە.webp" alt="Furniture Design" class="service-image">
+                  <div class="service-overlay">
+                    <h3 class="service-title">دیزین و جێ بە جێ کردنی واجیهه</h3>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+             
+      
+    </section>
+
+
+
+
+    <section id="prices">
+        <h1>نرخی خەمڵینراوی دروستکردنی خانوو بە نرخی مەواد و حەقدەستەوە</h1>
+        <p>فۆڕمەکە پڕبکە بۆ دۆزینەوەی نرخەکە</p>
+  <div class="form-group">
+    <label for="ground">ڕووبەری زەوی (متر٢)</label>
+    <select id="ground">
+      <option value="">هەلبژێرە</option>
+      <script>
+        for(let i=100; i<=1000; i+=100){
+          document.write(`<option value="${i}">${i}</option>`);
+        }
+      </script>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="area">ڕووبەری بینا (متر٢)</label>
+    <select id="area">
+      <option value="">هەلبژێرە</option>
+      <script>
+        for(let i=100; i<=1000; i+=100){
+          document.write(`<option value="${i}">${i}</option>`);
+        }
+      </script>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="floors">ژمارەی نهۆمانەکان/قاتەکان</label>
+    <select id="floors">
+      <option value="">هەلبژێرە</option>
+      <script>
+        for(let i=1; i<=47; i++){
+          document.write(`<option value="${i}">${i}</option>`);
+        }
+      </script>
+    </select>
+  </div>
+
+
+  <div class="form-group">
+    <label for="quality">کوالێتی بیناکەت چۆنبێت؟</label>
+    <select id="quality">
+      <option value="">هەلبژێرە</option>
+      <option value="low">نزم</option>
+      <option value="medium">مامناوەند</option>
+      <option value="full">نایاب</option>
+    </select>
+  </div>
+
+
+  <button onclick="calculate()">بنێرە بۆ وەرگرتنی نرخی خەمڵێنراو</button>
+
+  <div id="result">نرخی خەمڵێنراو</div>
+
+  <a id="whatsapp-btn" target="_blank">بنێرە بۆ واتسئەپەکەمان بۆ زانیاری زۆر وردتر</a>
+  <div class="quality-description">
+    <div class="quality-box low-quality">
+      <h3>کوالێتی نزم</h3>
+      <p>ئەساس بەس بنی دیوار ، هەیکەلی دیواری بلۆک ، دیکۆری دەرەوە لەبغ و بۆیاخ ، پەنجەرە و دەرگا پلاستیک.</p>
+    </div>
+    <div class="quality-box medium-quality">
+      <h3>کوالێتی مامناوەند</h3>
+      <p>ئەساس کامل زەوی ، هەیکەلی دیواری بلۆک ، پەنجەرەی دەرەو ئەلەمنیۆم ، دەکت ، مەغریبی ، دیکۆری دەرەو ئەسترۆپۆڵ یان سمنت بۆرد.</p>
+    </div>
+    <div class="quality-box full-quality">
+      <h3>کوالێتی نایاب</h3>
+      <p>ئەساس کامل ، جۆری هەیکەل جسرو پایە، دیوار خشت، شۆڤاژ، مەغریبی، دەکت، دەرگا و پەنجەرە ئەلەمنیۆم.</p>
+    </div>
+  </div>
+
+
+ 
+
+
+
+<section id="about" class="animate-on-scroll">
+  <div class="container">
+    <h1>نرخی نەخشەی خانوو</h1>
+
+    <label for="build-type">دانەیەک ھەلبژێرە</label>
+    <select id="build-type">
+        <option value="commercial">تجارى</option>
+        <option value="residential">نیشتەجێبوون</option>
+    </select>
+
+    <label for="build-area">ڕووبەری بینا بنوسە</label>
+    <input type="number" id="build-area" placeholder="بە م²">
+
+    <label for="build-floors">ژمارەی (تابق) قاتە‌کانی بینا بنوسە</label>
+    <input type="number" id="build-floors" placeholder="ژمارەی قاتەکان">
+
+    <button id="sendToWhatsAppQuick">ناردن بۆ واتسئەپەکەمان بۆ وەرگرتنی نرخ</button>
+
+    <p id="error-message-quick" style="color:red; display:none;"></p>
+  </div>
+</section>
+
+
+
+
+
+<section id="contact">
+
+    
+    <div class="contact-info">
+        <h3>زانیاری پەیوەندی</h3>
+        <p> <a href="mailto:idesign.kurd@gmail.com">idesignkurd@gmail.com</a> <strong>:ئیمەیڵ</strong> </p>
+        <p><strong> ناونیشانی ئۆفیسی سەرەکیمان:</strong> سلێمانی، گەڕەکی شارەوانی / بەرامبەر فامیلی مۆڵ</p>
+      
+        <div class="social-links">
+          <a href="https://www.facebook.com/share/1EpzaMdHpN/?mibextid=wwXIfr" target="_blank"> Facebook</a>
+          <a href="https://www.instagram.com/idesign.kurd?igsh=dWNnMDV5Y2c0Ng%3D%3D&utm_source=qr" target="_blank"> Instagram</a>
+          <a href="https://www.tiktok.com/@idesign.kurd?_t=ZS-8vy1f1REFGC&_r=1" target="_blank"> TikTok</a>
+          <a href="https://wa.me/message/W2CWMUGZRCJRL1" target="_blank"> WhatsApp</a>
+          <a href="tel:+9647741581989" target="_blank">ژمارەی موبایل</a>
+        </div>
+      </div>
+
+</section>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  // ===== Navbar toggle for mobile =====
+  const navLinksContainer = document.getElementById('nav-links');
+  const navLinks = navLinksContainer?.querySelectorAll('a') || [];
+  const menuToggle = document.getElementById('menu-toggle');
+  const overlay = document.getElementById('overlay');
+
+  function closeMenu() {
+    navLinksContainer?.classList.remove('active');
+    overlay.style.display = 'none';
+    menuToggle?.classList.remove('open');
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  menuToggle?.addEventListener('click', function () {
+    navLinksContainer?.classList.toggle('active');
+    overlay.style.display = navLinksContainer?.classList.contains('active') ? 'block' : 'none';
+    this.classList.toggle('open');
+  });
+
+  overlay?.addEventListener('click', closeMenu);
+
+  // ===== Quick Plan Price to WhatsApp =====
+  const quickSendBtn = document.getElementById('sendToWhatsAppQuick');
+  if (quickSendBtn) {
+    quickSendBtn.addEventListener('click', function () {
+      const type = document.getElementById('build-type').value;
+      let area = document.getElementById('build-area').value.trim();
+      let floors = document.getElementById('build-floors').value.trim();
+      const errorMessage = document.getElementById('error-message-quick');
+
+      const arabic = '٠١٢٣٤٥٦٧٨٩';
+      const latin = '0123456789';
+      const convertArabicDigits = str =>
+        str.replace(/[٠-٩]/g, d => latin[arabic.indexOf(d)]);
+
+      area = convertArabicDigits(area);
+      floors = convertArabicDigits(floors);
+
+      const areaNum = Number(area);
+      const floorsNum = Number(floors);
+
+      if (!area || !floors || !Number.isFinite(areaNum) || !Number.isFinite(floorsNum) || areaNum <= 0 || floorsNum <= 0) {
+        errorMessage.textContent = "تکایە ڕووبەر و ژمارەی قاتەکان بە ڕاستی پڕ بکەوە";
+        errorMessage.style.display = "block";
+        return;
+      }
+
+      errorMessage.style.display = "none";
+
+      const message = `زانیاری خانوو:\n\nجۆری بینا: ${type === 'commercial' ? 'تجارى' : 'نیشتەجێبوون'}\nڕووبەر: ${areaNum} م²\nژمارەی قاتەکان: ${floorsNum}\n\nتکایە نرخی نەخشەکان بۆ بڵێ.`;
+      const whatsappUrl = `https://wa.me/+9647741581989?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    });
+  }
+
+  // ===== Rough Estimate Cost Calculation =====
+  window.calculate = function () {
+    const ground = document.getElementById("ground").value;
+    const area = parseInt(document.getElementById("area").value);
+    const floors = parseInt(document.getElementById("floors").value);
+    const quality = document.getElementById("quality").value;
+    const resultDiv = document.getElementById("result");
+    const whatsappBtn = document.getElementById("whatsapp-btn");
+
+    if (!ground || !area || !floors || !quality) {
+      resultDiv.innerText = "⚠️ تکایە هەموو خانەکان پڕبکە";
+      whatsappBtn.style.display = "none";
+      return;
+    }
+
+    let rate = 0;
+    if (quality === "low") rate = 185;
+    else if (quality === "medium") rate = 220;
+    else if (quality === "full") rate = 280;
+
+    const total = area * floors * rate;
+    resultDiv.innerText = `نرخی خەمڵێنراو: $${total.toLocaleString()}`;
+
+    const message = `سڵاو، ئەمە هەژماری خوێندراوە:\n\nڕووبەری زەوی: ${ground} م٢\nڕووبەری بینا: ${area} م٢\nژمارەی قۆناغەکان: ${floors}\nکوالێتی: ${quality}\nنرخی خەمڵێنراو: $${total.toLocaleString()}\n\nتکایە ناردن بۆ زانیاری زیاتر.`;
+    const phone = '9647741581989';
+    const link = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    whatsappBtn.href = link;
+    whatsappBtn.style.display = "block";
+  };
+});
+</script>
+
+</body>
+</html>
